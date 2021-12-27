@@ -1,9 +1,7 @@
 <?php
-// TODO: turn off errors
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
-// TODO: we don't need the file
+use http\Exception\BadUrlException;
+
 require('../private/initialize.php');
 
 switch ($_SERVER['REQUEST_URI']) {
@@ -20,8 +18,8 @@ switch ($_SERVER['REQUEST_URI']) {
         require(PRIVATE_PATH . '/Controllers/userOffline.php');
         break;
     default:
-        echo "404";
-        // throw 404 using header
+        // throw new BadUrlException('Page Not Found', 404);
+        echo "Page Not Found";
         break;
 }
 

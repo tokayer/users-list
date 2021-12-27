@@ -1,12 +1,6 @@
 <?php
 
 
-// TODO: for the sake eof OOP
-//  create an abstract Table class and interface to handle tables in a generic way
-
-// TODO: write phpDoc with explanations
-// TODO: separate User and UsersTable?
-
 class User extends Table
 {
     const TABLE_PATH = PRIVATE_PATH . '/database/users.csv';
@@ -41,7 +35,10 @@ class User extends Table
         return self::ID_FIELD;
     }
 
-
+    /**
+     * @param array $data
+     * @return TableInterface
+     */
     public function create(array $data): TableInterface
     {
         if (!isset($data['email'], $data['name'])) {
@@ -61,6 +58,10 @@ class User extends Table
         return parent::create($data);
     }
 
+    /**
+     * @param array $data
+     * @return TableInterface
+     */
     public function update(array $data): TableInterface
     {
         // Adding system values

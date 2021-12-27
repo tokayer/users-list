@@ -12,6 +12,11 @@ abstract class Table Implements TableInterface
 
     abstract protected function getIdField(): string;
 
+    /**
+     * Converts the csv file records to an array
+     *
+     * @return array
+     */
     protected function parseRecordsFromFile(): array
     {
         $tablePath = $this->getTablePath();
@@ -30,7 +35,7 @@ abstract class Table Implements TableInterface
         return $records;
     }
 
-    protected function getAllRecords(): array
+    private function getAllRecords(): array
     {
         if ($this->records) {
             return $this->records;
@@ -40,7 +45,8 @@ abstract class Table Implements TableInterface
     }
 
     /**
-     * TODO: ADD DESCRIPTION
+     * Finds all records where column = value and returns results in array format
+     *
      * @param string $column
      * @param string $value
      * @return array
@@ -56,6 +62,12 @@ abstract class Table Implements TableInterface
         });
     }
 
+    /**
+     * Excepts an array of data and creates a record in DB (file)
+     *
+     * @param array $data
+     * @return TableInterface
+     */
     public function create(array $data): TableInterface
     {
         $fh = fopen($this->getTablePath(),'a+');
@@ -89,6 +101,12 @@ abstract class Table Implements TableInterface
         return $this;
     }
 
+    /**
+     * Updates an existing Object and saves changes to DB (file)
+     *
+     * @param array $data
+     * @return TableInterface
+     */
     public function update(array $data): TableInterface
     {
         if (empty($this->getIdField())) {
@@ -115,6 +133,11 @@ abstract class Table Implements TableInterface
         return $this;
     }
 
+    /**
+     * Saves all records to DB (file)
+     *
+     * @param array $records
+     */
     private function saveAllToDB(array $records): void
     {
         $fh = fopen($this->getTablePath(),'a+');
