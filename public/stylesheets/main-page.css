@@ -1,0 +1,25 @@
+body {
+    margin: 3%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px 5px;
+}
+
+#current-user {
+    font-family: Cursive, serif;
+    padding-bottom: 10px;
+    font-size: 30px;
+    color: chocolate;
+}
+
+tr.user-row:nth-child(even) {
+    background: #CCC
+}
+tr.user-row:nth-child(odd) {
+    background: #ccc3
+}

@@ -1,0 +1,16 @@
+html {
+    background-color: #ffc10733
+}
+
+body {
+    margin-top:6%;
+}
+
+#content {
+    margin: auto;
+    width: 300px;
+}
+
+input {
+    margin-bottom: 10px;
+}
